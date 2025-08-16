@@ -11,7 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag CI/CD:$(date +%s)
+      run: docker build . --file Dockerfile --tag ci/cd:$(date +%s)
 
   push_to_registry:
     name: Push Docker image to Docker Hub
