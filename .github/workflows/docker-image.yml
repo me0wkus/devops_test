@@ -31,7 +31,7 @@ jobs:
       - uses: actions/checkout@v3
       
       - name: Build Docker image
-        run: docker build -t app-under-test .
+        run: docker build -t me0wkus/devops_test:main .
         
       - name: Run test container
         run: |
@@ -39,7 +39,7 @@ jobs:
             --network host \
             -e DATABASE_URL="postgresql://ci_user:ci_password@localhost:5432/db" \
             --name app-container \
-            app-under-test
+            me0wkus/devops_test:main
           sleep 10
           
       - name: Install test dependencies
