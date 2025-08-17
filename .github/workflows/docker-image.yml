@@ -57,6 +57,8 @@ jobs:
             apt install -y docker-compose
             docker stop ${{ secrets.DOCKERHUB_NAMESPACE }}/${{ secrets.DOCKERHUB_REP }}:main || true
             docker rm ${{ secrets.DOCKERHUB_NAMESPACE }}/${{ secrets.DOCKERHUB_REP }}:main || true
+            docker stop postgres:13
+            docker rm postgres:13
             curl -O ${{ secrets.COMPOSE }}
             docker pull ${{ secrets.DOCKERHUB_NAMESPACE }}/${{ secrets.DOCKERHUB_REP }}:main
             docker-compose up -d
