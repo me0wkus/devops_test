@@ -56,7 +56,9 @@ jobs:
             apt install -y docker
             apt install -y docker-compose
             docker-compose stop app
+            docker-compose rm -f app
             docker-compose stop db
+            docker-compose rm -f db
             curl -O ${{ secrets.COMPOSE }}
             docker pull ${{ secrets.DOCKERHUB_NAMESPACE }}/${{ secrets.DOCKERHUB_REP }}:main
             docker-compose up -d
