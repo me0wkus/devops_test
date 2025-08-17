@@ -55,7 +55,7 @@ jobs:
             apt install python3-distutils-extra
             apt install -y docker
             apt install -y docker-compose
-            docker stop ${{ secrets.DOCKERHUB_NAMESPACE }}/${{ secrets.DOCKERHUB_REP }}:main || true
+            docker-compose stop app
             docker-compose stop db
             curl -O ${{ secrets.COMPOSE }}
             docker pull ${{ secrets.DOCKERHUB_NAMESPACE }}/${{ secrets.DOCKERHUB_REP }}:main
