@@ -1,6 +1,7 @@
-version: '3.8'
+version: '1'
 
 services:
+
   db:
     image: postgres:13
     environment:
@@ -14,8 +15,6 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
-    networks:
-      - inner_netw
 
   app:
     build: .
@@ -29,9 +28,7 @@ services:
       driver: "json-file"
       options:
         max-size: "10m"
-        max-file: "3"
-    networks:
-      - inner_netw    
+        max-file: "3"   
 
 volumes:
   db_data:
