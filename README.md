@@ -1,7 +1,4 @@
 # Sample of CI/CD (Docker usage)
-Status of last deployment:<br> 
-<img src="https://github.com/me0wkus/devops_test/workflows/CI/CD/badge.svg?branch=main"><br>
-
 **Как запускается процесс развёртывания:**
 - Процесс развёртывания приложения и базы данных начинается при ``git push`` в главную ветку ``main``.
 
