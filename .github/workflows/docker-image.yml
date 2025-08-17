@@ -1,4 +1,4 @@
-name: Tests and publishing docker image
+name: CI/CD
 
 on:
   push:
