@@ -52,7 +52,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            apt install -y python3 python3-venv
+            apt install python3-distutils-extra
             apt install -y docker
             apt install -y docker-compose
             docker stop ${{ secrets.DOCKERHUB_NAMESPACE }}/${{ secrets.DOCKERHUB_REP }}:main || true
