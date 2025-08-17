@@ -7,7 +7,7 @@ on:
 jobs:
   
   push_to_registry:
-    name: Push Docker image to Docker Hub
+    name: Build and push Docker image to Docker Hub
     runs-on: ubuntu-latest
     permissions:
       packages: write
@@ -52,7 +52,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            docker stop your-container-name || true
-            docker rm your-container-name || true
+            docker stop ${{ secrets.DOCKERHUB_NAMESPACE }}/${{ secrets.DOCKERHUB_REP }}:main || true
+            docker rm ${{ secrets.DOCKERHUB_NAMESPACE }}/${{ secrets.DOCKERHUB_REP }}:main || true
             docker pull ${{ secrets.DOCKERHUB_NAMESPACE }}/${{ secrets.DOCKERHUB_REP }}:main
-            docker run -d -p 80:80 --name deployed ${{ secrets.DOCKERHUB_NAMESPACE }}/${{ secrets.DOCKERHUB_REP }}:main
+            docker run -d -p 8080:8080 --name deployed ${{ secrets.DOCKERHUB_NAMESPACE }}/${{ secrets.DOCKERHUB_REP }}:main
