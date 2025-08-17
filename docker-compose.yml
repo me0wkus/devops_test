@@ -17,7 +17,7 @@ services:
         max-file: "3"
 
   app:
-    image: me0wkus/devops_test
+    image: me0wkus/devops_test:main
     ports:
       - "8080:8080"
     depends_on:
