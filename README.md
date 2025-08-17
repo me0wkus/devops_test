@@ -12,7 +12,7 @@
 - DOCKERHUB_REP - Название репозитория
 - COMPOSE - Путь до файла docker-compose.yml, например - ``https://raw.githubusercontent.com/user/repo/branch/path/to/file``
 
-**Как запустить локально на UNIX:**
+**Как запустить локально на Ubuntu/Debian:**
 - Склонировать репозиторий - ``git clone git@github.com:me0wkus/devops_test.git``
 - Установить Docker и Docker-Compose: 
 ``apt update && apt upgrade -y``
