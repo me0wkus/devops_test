@@ -1,5 +1,5 @@
 # Use the official Python image
-FROM python:3.12-slim
+FROM python:3.12
 
 # Set the working directory
 WORKDIR /app
@@ -14,7 +14,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY ./app /app/app
 
 # Expose the application port
-EXPOSE 7000
+EXPOSE 8080
 
 # Command to run the application
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "7000"]
