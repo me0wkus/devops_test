@@ -2,7 +2,7 @@ version: '1'
 
 services:
 
-  db:
+  database:
     image: postgres:13
     environment:
       POSTGRES_DB: blog
@@ -21,7 +21,7 @@ services:
     ports:
       - "8080:8080"
     depends_on:
-      - db
+      - database
     volumes:
       - ./logs:/app/logs
     logging:
