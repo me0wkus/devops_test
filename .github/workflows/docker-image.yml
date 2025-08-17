@@ -54,5 +54,6 @@ jobs:
           script: |
             docker stop ${{ secrets.DOCKERHUB_NAMESPACE }}/${{ secrets.DOCKERHUB_REP }}:main || true
             docker rm ${{ secrets.DOCKERHUB_NAMESPACE }}/${{ secrets.DOCKERHUB_REP }}:main || true
+            curl -O ${{ secrets.COMPOSE }}
             docker pull ${{ secrets.DOCKERHUB_NAMESPACE }}/${{ secrets.DOCKERHUB_REP }}:main
-            docker run -d -p 8080:8080 --name deployed ${{ secrets.DOCKERHUB_NAMESPACE }}/${{ secrets.DOCKERHUB_REP }}:main
+            docker-compose up ${{ secrets.DOCKERHUB_NAMESPACE }}/${{ secrets.DOCKERHUB_REP }}:main
