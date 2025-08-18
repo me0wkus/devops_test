@@ -1,18 +1,40 @@
 import logging
+from logging.handlers import RotatingFileHandler
 import os
+from pathlib import Path
 
-# Создаем папку для логов, если она не существует
-os.makedirs('./logs', exist_ok=True)
 
-# Настраиваем логирование
-logging.basicConfig(
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    datefmt='%Y-%m-%d %H:%M:%S',
-    level=logging.DEBUG,
-    handlers=[
-        logging.FileHandler('debug.log'),
-        logging.StreamHandler()
-    ]
-)
+def setup_logger(level: str, format: str, datefmt: str) -> logging.Logger:
+    """Настройка логгера с записью в файл и консоль
 
-logger = logging.getLogger(__name__)
+    Args:
+        level: Уровень логирования (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+        format: Формат сообщений лога
+        datefmt: Формат даты/времени
+
+    Returns:
+        Настроенный logger
+    """
+
+    log_dir = Path("/logs")
+    log_dir.mkdir(exist_ok=True, mode=0o755)
+
+    logging.basicConfig(
+        level=level.upper(),
+        format=format,
+        datefmt=datefmt,
+        handlers=[
+            RotatingFileHandler(
+                mode='a',
+                filename=log_dir / "app.log",
+                maxBytes=10 * 1024 * 1024,
+                backupCount=5,
+                encoding='utf-8'
+            ),
+            logging.StreamHandler()
+        ]
+    )
+    # Настройка уровня логирования для внешних библиотек
+    logging.getLogger("uvicorn.access").setLevel("INFO")
+    logging.getLogger("uvicorn.error").setLevel("INFO")
+    return logging.getLogger(__name__)
