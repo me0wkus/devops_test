@@ -16,7 +16,7 @@ api_router = APIRouter(
 def read_posts():
     db: Session = SessionLocal()
     posts = db.query(Post).all()
-    logger.info("Получены все посты")
+    logger.info("Got all posts")
     return posts
 
 
@@ -27,5 +27,5 @@ def create_post(post: PostCreate):
     db.add(db_post)
     db.commit()
     db.refresh(db_post)
-    logger.info(f"Создан новый пост: {post.title}")
+    logger.info(f"Created new post: {post.title}")
     return db_post
