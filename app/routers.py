@@ -1,10 +1,11 @@
 from typing import List
 
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 from sqlalchemy.orm import Session
 
 from app.models import SessionLocal, Post
 from app.schemas import PostResponse, PostCreate
+from app.logger import logger
 
 api_router = APIRouter(
     prefix="",
@@ -15,6 +16,7 @@ api_router = APIRouter(
 def read_posts():
     db: Session = SessionLocal()
     posts = db.query(Post).all()
+    logger.info("Получены все посты")
     return posts
 
 
@@ -25,4 +27,5 @@ def create_post(post: PostCreate):
     db.add(db_post)
     db.commit()
     db.refresh(db_post)
+    logger.info(f"Создан новый пост: {post.title}")
     return db_post
