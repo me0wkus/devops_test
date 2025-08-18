@@ -1,7 +1,4 @@
 # Sample of CI/CD (Docker usage)
-Status of last deployment:<br> 
-<img src="https://github.com/me0wkus/devops_test/workflows/CI/CD/badge.svg?branch=main"><br>
-
 **Как запускается процесс развёртывания:**
 - Процесс развёртывания приложения и базы данных начинается при ``git push`` в главную ветку ``main``.
 
@@ -15,7 +12,7 @@ Status of last deployment:<br>
 - DOCKERHUB_REP - Название репозитория
 - COMPOSE - Путь до файла docker-compose.yml, например - ``https://raw.githubusercontent.com/user/repo/branch/path/to/file``
 
-**Как запустить локально на UNIX:**
+**Как запустить локально на Ubuntu/Debian:**
 - Склонировать репозиторий - ``git clone git@github.com:me0wkus/devops_test.git``
 - Установить Docker и Docker-Compose: 
 ``apt update && apt upgrade -y``
