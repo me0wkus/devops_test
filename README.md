@@ -24,3 +24,12 @@ Status of last deployment:<br>
 - Перейти в склонированный репозиторий - ``cd ./path``
 - Запустить - ``docker-compose up``
 - Чтобы остановить процессы - ``docker-compose down``
+# Технологии
+
+- **Язык программирования**: Python
+- **Веб-фреймворк**: FastAPI
+- **База данных**: PostgreSQL
+- **ORM**: SQLAlchemy
+- **Контейнеризация**: Docker, Docker Compose
+- **CI/CD**: GitHub Actions
+- **Сервер**: Uvicorn
