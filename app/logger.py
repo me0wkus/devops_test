@@ -5,18 +5,8 @@ from pathlib import Path
 
 
 def setup_logger(level: str, format: str, datefmt: str) -> logging.Logger:
-    """Настройка логгера с записью в файл и консоль
 
-    Args:
-        level: Уровень логирования (DEBUG, INFO, WARNING, ERROR, CRITICAL)
-        format: Формат сообщений лога
-        datefmt: Формат даты/времени
-
-    Returns:
-        Настроенный logger
-    """
-
-    log_dir = Path("/logs")
+    log_dir = Path("logs")
     log_dir.mkdir(exist_ok=True, mode=0o755)
 
     logging.basicConfig(

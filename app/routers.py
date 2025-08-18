@@ -24,6 +24,7 @@ def read_posts():
 
 @api_router.post("/posts", response_model=PostResponse)
 def create_post(post: PostCreate):
+    logger.info("Creating post: %s", post.title)
     db: Session = SessionLocal()
     db_post = Post(title=post.title, content=post.content)
     db.add(db_post)
